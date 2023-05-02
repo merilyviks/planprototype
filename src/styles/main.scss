@@ -1,0 +1,36 @@
+//import all Sass files here, keep them alphabetical order by folders
+
+//BASE
+@use "./base/animations";
+@use "./base/colors";
+@use "./base/fonts";
+@use "./base/functions";
+@use "./base/globals";
+@use "./base/mixins";
+@use "./base/placeholders";
+@use "./base/reset";
+@use "./base/typography";
+@use "./base/variables";
+
+//COMPONENTS
+//buttons
+@use "./components/buttons/icon-button";
+@use "./components/buttons/text-button";
+@use "./components/buttons/toggle-button";
+//chpater
+@use "./components/chapter/chapter";
+//forms
+@use "./components/forms/forms";
+//setting
+@use "./components/settings/layout-settings";
+//sidebar
+@use "./components/sidebar/sidebar";
+
+//FUNCTIONS
+@use "./functions/nav-buttons";
+@use "./functions/search-box";
+
+//PAGES
+@use "./pages/create-plan";
+@use "./pages/dashboard";
+@use "./pages/home";

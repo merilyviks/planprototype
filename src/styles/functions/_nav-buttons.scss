@@ -1,0 +1,13 @@
+@use "../base/colors" as c;
+.nav-buttons {
+  width: 15%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 40%;
+  margin-right: -7.5%;
+  margin-bottom: 2rem;
+  background-color: c.$light-gray-c;
+  border-radius: 10px;
+  box-shadow: 4px 4px 85px 5px rgba(0, 0, 0, 0.2);
+}

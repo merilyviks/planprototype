@@ -1,0 +1,46 @@
+//styles that will be used multible times
+@use "./colors" as c;
+
+@mixin main-background {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: unset;
+  background: rgb(250, 255, 186);
+  background: -moz-linear-gradient(
+    304deg,
+    c.$light-yellow-c 0%,
+    c.$light-blue-c 40%,
+    c.$light-pink-c 60%,
+    c.$light-green-c 100%
+  );
+  background: -webkit-linear-gradient(
+    304deg,
+    c.$light-yellow-c 0%,
+    c.$light-blue-c 40%,
+    c.$light-pink-c 60%,
+    c.$light-green-c 100%
+  );
+  background: linear-gradient(
+    304deg,
+    c.$light-yellow-c 0%,
+    c.$light-blue-c 40%,
+    c.$light-pink-c 60%,
+    c.$light-green-c 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#faffba",endColorstr="#e4ffdf",GradientType=1);
+}
+
+@mixin main-container-on-background {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 4px 4px 85px 5px rgba(0, 0, 0, 0.3);
+  height: auto;
+  width: 80vw;
+  height: 80vh;
+  padding: 2rem 4rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  border-radius: 25px;
+  position: relative;
+  overflow: scroll;
+}

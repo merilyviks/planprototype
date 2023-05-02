@@ -1,0 +1,8 @@
+@use "../base/mixins" as m;
+
+.main-background {
+  @include m.main-background;
+  .main-container-on-background {
+    @include m.main-container-on-background;
+  }
+}

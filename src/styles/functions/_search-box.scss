@@ -1,0 +1,12 @@
+@use "../base/colors" as c;
+
+.search-box {
+  background-color: c.$white-c;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 7px 1px rgba(59, 59, 59, 0.3);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 25px;
+  max-width: 50%;
+}
