@@ -11,11 +11,11 @@ export default function Login() {
   const { supabase } = useSupabase();
 
   const handleLogin = async () => {
-    const email = await process.env.NEXT_PUBLIC_SUPA_EMAIL!;
+    const emailcode = await process.env.NEXT_PUBLIC_SUPA_EMAIL!;
     const pass = await process.env.NEXT_PUBLIC_SUPA_PASS!;
     await supabase.auth.signInWithPassword({
-      email: email,
-      password: pass,
+      email: "merily.viks@gmail.com",
+      password: "parool123",
     });
   };
 
