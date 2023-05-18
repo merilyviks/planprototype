@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { TiArrowLeft } from "react-icons/ti";
@@ -64,3 +64,4 @@ export default function IconButton({ name }: MyIconProps): JSX.Element {
   }
 }
 
+ */

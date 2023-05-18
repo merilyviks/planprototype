@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.38",
+    "encoding": "^0.1.13",
     "sass": "^1.62.0"
   }
 }

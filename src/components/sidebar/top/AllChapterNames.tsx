@@ -24,7 +24,7 @@ export default function AllChapterNames({ planId, mainCount, list }: Contents) {
 
         return (
           <Item
-            key={content.contents_provided?.position}
+            key={index}
             id={planId}
             mainCount={mainCount}
             chapterCount={chaptersCount++}

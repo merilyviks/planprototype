@@ -1,6 +1,5 @@
 "use client";
 import { TiArrowLeft, TiArrowRight, TiCog } from "react-icons/ti";
-import IconButton from "./IconButton";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function NavButtons({

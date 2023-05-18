@@ -27,7 +27,7 @@ export default async function Top({
   const contentsDataUnsorted = await getContents({ planId });
 
   const contentsData = contentsDataUnsorted.sort(
-    (a, b) => a.contents_provided?.position - b.contents_provided?.position
+    (a, b) => a.contents_provided?.position! - b.contents_provided?.position!
   );
 
   const contentsPre = contentsData.filter(

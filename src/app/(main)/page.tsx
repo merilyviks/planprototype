@@ -1,4 +1,3 @@
-
 import { createServerClient } from "@/utils/supabase-server";
 import Plans from "./components/Plans";
 import Login from "@/components/auth/Login";
@@ -8,6 +7,11 @@ export default async function Home() {
   if (!isLogged.data.user) {
     return <Login />;
   } else {
-    return <Plans />;
+    return (
+      <>
+        {/* @ts-expect-error Async Server Component */}
+        <Plans />;
+      </>
+    );
   }
 }
