@@ -8,10 +8,8 @@ export default async function Home() {
     return <Login />;
   } else {
     return (
-      <>
-        {/* @ts-expect-error Async Server Component */}
-        <Plans />;
-      </>
+      /* @ts-expect-error Async Server Component */
+      <Plans />
     );
   }
 }
