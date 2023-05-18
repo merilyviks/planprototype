@@ -51,7 +51,9 @@ export default async function RecipePage({
                 <td>
                   {allDocs.map((obj, index) => {
                     return (
-                      <li key={index}>{obj.document_provided.document_name}</li>
+                      <li key={index}>
+                        {obj.document_provided?.document_name}
+                      </li>
                     );
                   })}
                 </td>
