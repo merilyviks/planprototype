@@ -1,3 +1,4 @@
+import {ChapterDocument} from "@/components/chapters/ChapterDocument";
 import { ChapterPurpose } from "@/components/chapters/ChapterPurpose";
 import { ChapterWorkers } from "@/components/chapters/ChapterWorkers";
 import AllergyTable from "@/components/information/AllergyTable";
@@ -54,10 +55,8 @@ export default async function RecipePage({
         </div>
       )}
       {contents.uses_docs && (
-        <>
-          <h2>Dokumendid</h2>
-          <li>Retseptid</li>
-        </>
+        /* @ts-expect-error Async Server Component */
+        <ChapterDocument planId={planId} chapterId={contentsChosenId} />
       )}
     </>
   );

@@ -24,8 +24,8 @@ export async function getAllWorkerTasks() {
     if (error) {
         throw new Error(error.message);
     }
-    const allWorkerTasksData: Worker_task_connected[] = JSON.parse(
+    const workerTaskConnectionsData: Worker_task_connected[] = JSON.parse(
         JSON.stringify(data)
     );
-    return allWorkerTasksData;
+    return workerTaskConnectionsData;
 }

@@ -30,7 +30,6 @@ export default async function Concepts({
   const data = await getInfo({ planId });
   return (
     <div className="concepts">
-      <h1>Mõisted</h1>
       {data.map((concept, index) => {
         return (
           <div key={index}>

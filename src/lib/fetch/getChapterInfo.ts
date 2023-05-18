@@ -1,5 +1,5 @@
 import { createServerClient } from "@/utils/supabase-server";
-import { Chapter_material, Contents_selected, Purpose_provided } from "../general/generalTypes";
+import { Chapter_material, Contents_selected, Provided_manegment, Purpose_provided } from "../general/generalTypes";
 
 export async function getChapterInfo({ chapterUserId }: { chapterUserId: number }) {
     const supabase = createServerClient();
@@ -50,3 +50,20 @@ export async function getProvidedPurposes({ chapterId }: { chapterId: number }) 
     );
     return providedPurposesData;
 }
+
+export async function getProvidedManegment({ contentsChosenId }: { contentsChosenId: number }) {
+    const supabase = createServerClient()
+    const { data, error } = await supabase.from("provided_manegment")
+        .select("*")
+        .eq("connected_chapter", contentsChosenId)
+
+
+    if (error) {
+        throw new Error(error.message);
+    }
+    const providedPurposesData: Provided_manegment[] = JSON.parse(
+        JSON.stringify(data)
+    );
+    return providedPurposesData;
+}
+

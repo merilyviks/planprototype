@@ -14,6 +14,13 @@ export interface Concepts_provided {
   created_at?: string;
 };
 
+export interface Document_provided {
+  id: number   /* primary key */;
+  document_name?: string;
+  content_provided?: number   /* foreign key to contents_provided.id */;
+  contents_provided?: Contents_provided;
+};
+
 export interface Company_info {
   id: number   /* primary key */;
   company_name: string;
@@ -26,6 +33,23 @@ export interface Company_info {
   is_company?: boolean;
   company_phone?: number;
   company_email?: string;
+};
+
+export interface Pta_offices {
+  id: number   /* primary key */;
+  county: string;
+  region: string;
+  address: string;
+  name: string;
+  phone?: number;
+  email: string;
+  created_at?: string;
+};
+
+export interface Chapter_schema_provided {
+  id: number   /* primary key */;
+  name?: string;
+  description?: string;
 };
 
 export interface Contact_person {
@@ -84,34 +108,20 @@ export interface Workers_added {
 
 export interface Worker_task_connected {
   id: number   /* primary key */;
-  created_at?: string;
-  is_used?: boolean
   worker_id?: number   /* foreign key to workers_added.id */;
   task_provided_id?: number   /* foreign key to worker_tasks_provided.id */;
+  is_used?: boolean;
   workers_added?: Workers_added;
   worker_tasks_provided?: Worker_tasks_provided;
 };
 
-export interface Pta_offices {
+export interface Mtm_variables_main_contents_provided {
   id: number   /* primary key */;
-  county: string;
-  region: string;
-  address: string;
-  name: string;
-  phone?: number;
-  email: string;
+  connected_haccp_contents?: number   /* foreign key to contents_provided.id */;
+  connected_pre_contents?: number;
   created_at?: string;
-};
-
-export interface Chapter_preferences {
-  id: number   /* primary key */;
-  created_at?: string;
-  plan_id: number   /* foreign key to self_plans.id */;
-  uses_purpose: boolean;
-  uses_supervisors: boolean;
-  uses_manegment: boolean;
-  uses_control: boolean;
-  uses_docs: boolean;
+  connected_plan: number   /* foreign key to self_plans.id */;
+  contents_provided?: Contents_provided;
   self_plans?: Self_plans;
 };
 
@@ -135,7 +145,6 @@ export interface Concepts_added {
 
 export interface Contents_selected {
   id: number   /* primary key */;
-  created_at: string;
   contents_named?: string;
   contents_chosen: number   /* foreign key to contents_provided.id */;
   is_used: boolean;
@@ -163,14 +172,13 @@ export interface Chapter_analyze_ccp {
   contents_selected?: Contents_selected;
 };
 
-export interface Mtm_variables_main_contents_provided {
+export interface Document_connected {
   id: number   /* primary key */;
-  connected_haccp_contents?: number   /* foreign key to contents_provided.id */;
-  connected_pre_contents?: number;
-  created_at?: string;
-  connected_plan: number   /* foreign key to self_plans.id */;
-  contents_provided?: Contents_provided;
-  self_plans?: Self_plans;
+  document_id?: number   /* foreign key to document_provided.id */;
+  content_connected?: number   /* foreign key to contents_selected.id */;
+  is_used?: boolean;
+  document_provided?: Document_provided;
+  contents_selected?: Contents_selected;
 };
 
 export interface Purpose_selected {
@@ -238,6 +246,28 @@ export interface Variables_secondary {
   variables_main?: Variables_main;
 };
 
+export interface Variables_selected {
+  id: number   /* primary key */;
+  variable_selected?: number   /* foreign key to variables_secondary.id */;
+  created_at?: string;
+  plan_id?: number   /* foreign key to self_plans.id */;
+  selected_option?: number;
+  variables_secondary?: Variables_secondary;
+  self_plans?: Self_plans;
+};
+
+export interface Chapter_preferences {
+  id: number   /* primary key */;
+  created_at?: string;
+  plan_id: number   /* foreign key to self_plans.id */;
+  uses_purpose: boolean;
+  uses_supervisors: boolean;
+  uses_manegment: boolean;
+  uses_control: boolean;
+  uses_docs: boolean;
+  self_plans?: Self_plans;
+};
+
 export interface Provided_manegment {
   id: number   /* primary key */;
   provided_manegment?: string;
@@ -259,15 +289,5 @@ export interface Chapter_material {
   is_used: boolean;
   contents_selected?: Contents_selected;
   provided_manegment?: Provided_manegment;
-};
-
-export interface Variables_selected {
-  id: number   /* primary key */;
-  variable_selected?: number   /* foreign key to variables_secondary.id */;
-  created_at?: string;
-  plan_id?: number   /* foreign key to self_plans.id */;
-  selected_option?: number;
-  variables_secondary?: Variables_secondary;
-  self_plans?: Self_plans;
 };
 

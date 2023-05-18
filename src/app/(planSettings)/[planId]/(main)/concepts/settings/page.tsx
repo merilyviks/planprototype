@@ -99,7 +99,7 @@ export default async function ConceptsSettings({
   );
 
   return (
-    <div className="contents">
+    <div className="concepts">
       <table className="used settings-table">
         <thead>
           <OneTableRow name={"Ametlikud mõisted"} />

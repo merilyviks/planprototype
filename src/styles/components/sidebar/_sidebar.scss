@@ -15,11 +15,11 @@
   /* lex-direction: column; */
   .top {
     .active {
-      color: aqua;
+      font-weight: 700;
     }
 
     .wrong {
-      color: red;
+      color: black;
     }
   }
   .bottom {
@@ -53,6 +53,21 @@
       align-items: center;
       justify-content: center;
       padding: 5px;
+    }
+  }
+}
+
+.top {
+  li {
+    display: flex;
+    p {
+      margin: 3pt;
+    }
+  }
+  a {
+    display: flex;
+    p {
+      margin: 3pt;
     }
   }
 }

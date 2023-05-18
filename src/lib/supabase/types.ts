@@ -102,6 +102,23 @@ export interface Database {
           uses_supervisors?: boolean
         }
       }
+      chapter_schema_provided: {
+        Row: {
+          description: string | null
+          id: number
+          name: string | null
+        }
+        Insert: {
+          description?: string | null
+          id?: number
+          name?: string | null
+        }
+        Update: {
+          description?: string | null
+          id?: number
+          name?: string | null
+        }
+      }
       company_info: {
         Row: {
           company_country: string | null
@@ -297,7 +314,6 @@ export interface Database {
         Row: {
           contents_chosen: number
           contents_named: string | null
-          created_at: string
           id: number
           is_used: boolean
           plan_id: number
@@ -310,7 +326,6 @@ export interface Database {
         Insert: {
           contents_chosen: number
           contents_named?: string | null
-          created_at?: string
           id?: number
           is_used?: boolean
           plan_id: number
@@ -323,7 +338,6 @@ export interface Database {
         Update: {
           contents_chosen?: number
           contents_named?: string | null
-          created_at?: string
           id?: number
           is_used?: boolean
           plan_id?: number
@@ -332,6 +346,43 @@ export interface Database {
           uses_manegment?: boolean
           uses_purpose?: boolean
           uses_supervisors?: boolean
+        }
+      }
+      document_connected: {
+        Row: {
+          content_connected: number | null
+          document_id: number | null
+          id: number
+          is_used: boolean | null
+        }
+        Insert: {
+          content_connected?: number | null
+          document_id?: number | null
+          id?: number
+          is_used?: boolean | null
+        }
+        Update: {
+          content_connected?: number | null
+          document_id?: number | null
+          id?: number
+          is_used?: boolean | null
+        }
+      }
+      document_provided: {
+        Row: {
+          content_provided: number | null
+          document_name: string | null
+          id: number
+        }
+        Insert: {
+          content_provided?: number | null
+          document_name?: string | null
+          id?: number
+        }
+        Update: {
+          content_provided?: number | null
+          document_name?: string | null
+          id?: number
         }
       }
       mtm_variables_main_contents_provided: {
@@ -652,21 +703,18 @@ export interface Database {
       }
       worker_task_connected: {
         Row: {
-          created_at: string | null
           id: number
           is_used: boolean | null
           task_provided_id: number | null
           worker_id: number | null
         }
         Insert: {
-          created_at?: string | null
           id?: number
           is_used?: boolean | null
           task_provided_id?: number | null
           worker_id?: number | null
         }
         Update: {
-          created_at?: string | null
           id?: number
           is_used?: boolean | null
           task_provided_id?: number | null
