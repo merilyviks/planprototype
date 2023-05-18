@@ -1,6 +1,6 @@
 "use clinet";
 import Logout from "@/components/auth/Logout";
-import IconButton from "@/components/buttons/IconButton";
+
 import Link from "next/link";
 import { TiHome } from "react-icons/ti";
 
