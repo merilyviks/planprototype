@@ -50,11 +50,13 @@ export default async function RecipePage({
                 <td>Enesekontrolliplaan</td>
                 <td>
                   {allDocs.map((obj, index) => {
-                    return (
-                      <li key={index}>
-                        {obj.document_provided?.document_name}
-                      </li>
-                    );
+                    if (obj.document_provided?.document_name !== undefined) {
+                      return (
+                        <li key={index}>
+                          {obj.document_provided!.document_name}
+                        </li>
+                      );
+                    }
                   })}
                 </td>
               </tr>

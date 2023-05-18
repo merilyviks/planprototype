@@ -13,7 +13,7 @@ export async function ChapterDocument({
     <>
       <h2>Dokumendid</h2>
       {documents.map((obj, index) => {
-        return <li key={index}>{obj.document_provided.document_name}</li>;
+        return <li key={index}>{obj.document_provided!.document_name}</li>;
       })}
     </>
   );
