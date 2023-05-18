@@ -27,6 +27,7 @@ export default async function Contents({
   const selfPlans = await getPlanInfo({ planId });
   return (
     <div className="contents">
+      {/* @ts-expect-error Async Server Component */}
       <Top
         params={{
           planId: planId,

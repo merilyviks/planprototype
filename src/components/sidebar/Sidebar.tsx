@@ -9,6 +9,7 @@ export default function Sidebar({
 }): JSX.Element {
   return (
     <div className="sidebar">
+      {/* @ts-expect-error Async Server Component */}
       <Top
         params={{
           planId: planId,

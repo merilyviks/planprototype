@@ -5,8 +5,6 @@ import {
 } from "@/lib/general/generalTypes";
 
 import { createServerClient } from "@/utils/supabase-server";
-import RemoveContentButton from "../../../../../../components/settings/main/RemoveContentButton";
-import AddContentButton from "../../../../../../components/settings/main/ButtonUpdateUsage";
 import SelectContentButton from "../../../../../../components/settings/main/SelectContentButton";
 import ChapterName from "../../../../../../components/settings/main/ChapterName";
 import ButtonUpdateUsage from "../../../../../../components/settings/main/ButtonUpdateUsage";
@@ -73,7 +71,7 @@ export default async function ContentsSettings({
   const userContentsDataUnSorted = await getUserContents({ planId });
 
   const userContentsData = userContentsDataUnSorted.sort(
-    (a, b) => a.contents_provided?.position - b.contents_provided?.position
+    (a, b) => a.contents_provided?.position! - b.contents_provided?.position!
   );
 
   const unUsedProvidedContents = userContentsData.map(
