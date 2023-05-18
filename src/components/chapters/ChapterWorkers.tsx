@@ -1,6 +1,6 @@
 import { getWorkerTaskConnections } from "@/lib/fetch/getWorker";
 
-export default async function ChapterWorkers({
+export async function ChapterWorkers({
   planId,
   contentId,
 }: {

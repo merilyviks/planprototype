@@ -1,5 +1,5 @@
 import { ChapterPurpose } from "@/components/chapters/ChapterPurpose";
-import ChapterWorkers from "@/components/chapters/ChapterWorkers";
+import { ChapterWorkers } from "@/components/chapters/ChapterWorkers";
 import {
   getChapterInfo,
   getSpecificContentsInfo,
@@ -17,8 +17,10 @@ export default async function Material({
 
   return (
     <div className="Material Chapter-page">
+      {/* @ts-expect-error Async Server Component */}
       {contents.uses_purpose && <ChapterPurpose chapterId={contentsChosenId} />}
       {contents.uses_supervisors && (
+        /* @ts-expect-error Async Server Component */
         <ChapterWorkers planId={planId} contentId={contentsChosenId} />
       )}
       {/* {contents.uses_manegment && (
