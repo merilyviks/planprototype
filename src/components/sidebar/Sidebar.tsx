@@ -3,23 +3,19 @@ import Top from "./Top";
 import Bottom from "./Bottom";
 
 export default function Sidebar({
-  params,
+  params: { planId, selfPlan },
 }: {
-  params: { planId: number; selfPlan: string };
-}) {
-  const planId = params.planId as number;
-  const selfPlanString = params.selfPlan;
-  const selfPlanData = JSON.parse(selfPlanString);
+  params: { planId: number; selfPlan: Self_plans };
+}): JSX.Element {
   return (
     <div className="sidebar">
-      <h1>sidebar</h1>
       <Top
         params={{
           planId: planId,
-          selfPlan: selfPlanString,
+          selfPlan: selfPlan,
         }}
       />
-      <Bottom planTitle={selfPlanData.self_plan_name} />
+      <Bottom planTitle={selfPlan.self_plan_name} />
     </div>
   );
 }

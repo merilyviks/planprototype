@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type ItemProps = {
-  index: number;
+  key: number;
   id: number;
   mainCount: number;
   chapterCount: number;
@@ -10,21 +10,20 @@ type ItemProps = {
 };
 
 export default function Item({
-  index,
+  key,
   id,
   mainCount,
   chapterCount,
   urlTitle,
   chosenTitle,
 }: ItemProps) {
-
   return (
-    <li key={`${chosenTitle}-${index}`}>
+    <li key={key}>
       <Link
         href={`/${encodeURIComponent(id)}/${encodeURIComponent(
           urlTitle ? urlTitle : "null"
         )}`}
-        key={`${chosenTitle}-${index}`}
+        key={key * 10}
       >
         <p className="number">
           {mainCount}.{chapterCount}

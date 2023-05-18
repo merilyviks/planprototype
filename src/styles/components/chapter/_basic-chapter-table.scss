@@ -1,0 +1,31 @@
+.basic-chapter-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 24pt auto;
+
+  th,
+  tr,
+  td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #000000;
+    font-size: 10pt;
+  }
+  tr:empty,
+  td:empty {
+    min-height: 50px;
+    height: 100%;
+  }
+
+  /* &.analyze-table {
+    
+  } */
+  &.analyze-table {
+    td:first-child {
+      width: 30%;
+    }
+    td:last-child {
+      width: 70%;
+    }
+  }
+}

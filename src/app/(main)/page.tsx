@@ -1,11 +1,12 @@
-import Logger from "./logger";
+
 import { createServerClient } from "@/utils/supabase-server";
 import Plans from "./components/Plans";
+import Login from "@/components/auth/Login";
 
 export default async function Home() {
   const isLogged = await createServerClient().auth.getUser();
   if (!isLogged.data.user) {
-    return <Logger />;
+    return <Login />;
   } else {
     return <Plans />;
   }

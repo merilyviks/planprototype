@@ -13,7 +13,7 @@ export default function AllChapterNames({ planId, mainCount, list }: Contents) {
   let chaptersCount = 1;
 
   return (
-    <ul className="all-chapters ">
+    <ul className="all-chapters" key={mainCount}>
       {list.map((content, index) => {
         const urlTitle = content.contents_provided?.title;
         const chosenTitle = content.contents_named
@@ -22,17 +22,15 @@ export default function AllChapterNames({ planId, mainCount, list }: Contents) {
           ? content.contents_provided?.title_chosen
           : content.contents_provided?.title;
 
-        return content.is_used ? (
+        return (
           <Item
-            index={index}
+            key={content.contents_provided?.position}
             id={planId}
             mainCount={mainCount}
             chapterCount={chaptersCount++}
             urlTitle={urlTitle}
             chosenTitle={chosenTitle}
           />
-        ) : (
-          ""
         );
       })}
     </ul>

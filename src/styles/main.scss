@@ -13,12 +13,15 @@
 @use "./base/variables";
 
 //COMPONENTS
+//auth
+@use "./components/auth/login";
+@use "./components/auth/logout";
 //buttons
 @use "./components/buttons/icon-button";
 @use "./components/buttons/text-button";
 @use "./components/buttons/toggle-button";
 //chpater
-@use "./components/chapter/chapter";
+@use "./components/chapter/basic-chapter-table";
 //forms
 @use "./components/forms/forms";
 //setting
@@ -31,6 +34,8 @@
 @use "./functions/search-box";
 
 //PAGES
+@use "./pages/chapter";
 @use "./pages/create-plan";
 @use "./pages/dashboard";
+@use "./pages/settings";
 @use "./pages/home";

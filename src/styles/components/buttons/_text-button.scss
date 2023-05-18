@@ -1,11 +1,12 @@
 @use "../../base/colors" as c;
 
+.big-text-button,
 .text-button {
   background-color: c.$white-c;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 2px 7px 1px rgba(59, 59, 59, 0.3);
   cursor: pointer;
+  box-shadow: 2px 2px 7px 1px rgba(59, 59, 59, 0.3);
   border-radius: 10px;
   padding: 10px 25px;
   text-transform: uppercase;
@@ -15,4 +16,28 @@
     left: 0;
     position: absolute;
   } */
+  &.logout {
+    z-index: 1;
+    width: 15rem;
+    height: 100%;
+    display: inline-flex;
+    box-shadow: 2px 2px 7px 1px rgba(59, 59, 59, 0);
+    border-radius: 10px;
+    background-color: transparent;
+    justify-content: space-between;
+    display: inline-flex;
+    svg {
+      width: 30%;
+      padding: 0px 15px;
+    }
+    &:hover {
+      box-shadow: 2px 2px 7px 1px rgba(59, 59, 59, 0.3);
+      border-radius: 10px;
+      background-color: c.$transparent-one-c;
+    }
+  }
 }
+
+/* .big-text-button {
+  border-radius: 0;
+} */

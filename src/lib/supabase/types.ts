@@ -9,6 +9,99 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      chapter_analyze_ccp: {
+        Row: {
+          ccp_number: number | null
+          chapter_connected: number | null
+          corrective_action: string | null
+          created_at: string | null
+          critical_limit: string | null
+          description: string | null
+          id: number
+          method: string | null
+          method_supervisor: string | null
+          monitoring_sheet: string | null
+        }
+        Insert: {
+          ccp_number?: number | null
+          chapter_connected?: number | null
+          corrective_action?: string | null
+          created_at?: string | null
+          critical_limit?: string | null
+          description?: string | null
+          id?: number
+          method?: string | null
+          method_supervisor?: string | null
+          monitoring_sheet?: string | null
+        }
+        Update: {
+          ccp_number?: number | null
+          chapter_connected?: number | null
+          corrective_action?: string | null
+          created_at?: string | null
+          critical_limit?: string | null
+          description?: string | null
+          id?: number
+          method?: string | null
+          method_supervisor?: string | null
+          monitoring_sheet?: string | null
+        }
+      }
+      chapter_material: {
+        Row: {
+          chapter_content: number
+          chapter_selected: number
+          created_at: string | null
+          id: number
+          is_used: boolean
+        }
+        Insert: {
+          chapter_content: number
+          chapter_selected: number
+          created_at?: string | null
+          id?: number
+          is_used?: boolean
+        }
+        Update: {
+          chapter_content?: number
+          chapter_selected?: number
+          created_at?: string | null
+          id?: number
+          is_used?: boolean
+        }
+      }
+      chapter_preferences: {
+        Row: {
+          created_at: string | null
+          id: number
+          plan_id: number
+          uses_control: boolean
+          uses_docs: boolean
+          uses_manegment: boolean
+          uses_purpose: boolean
+          uses_supervisors: boolean
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          plan_id: number
+          uses_control?: boolean
+          uses_docs?: boolean
+          uses_manegment?: boolean
+          uses_purpose?: boolean
+          uses_supervisors?: boolean
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          plan_id?: number
+          uses_control?: boolean
+          uses_docs?: boolean
+          uses_manegment?: boolean
+          uses_purpose?: boolean
+          uses_supervisors?: boolean
+        }
+      }
       company_info: {
         Row: {
           company_country: string | null
@@ -99,6 +192,7 @@ export interface Database {
       concepts_selected: {
         Row: {
           added_concepts: number | null
+          contents_info: number | null
           created_at: string | null
           id: number
           is_used: boolean
@@ -108,6 +202,7 @@ export interface Database {
         }
         Insert: {
           added_concepts?: number | null
+          contents_info?: number | null
           created_at?: string | null
           id?: number
           is_used?: boolean
@@ -117,6 +212,7 @@ export interface Database {
         }
         Update: {
           added_concepts?: number | null
+          contents_info?: number | null
           created_at?: string | null
           id?: number
           is_used?: boolean
@@ -151,56 +247,91 @@ export interface Database {
           phone?: string | null
         }
       }
+      content_test: {
+        Row: {
+          created_at: string | null
+          id: number
+          is_used: boolean | null
+          position: number | null
+          test: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          is_used?: boolean | null
+          position?: number | null
+          test: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          is_used?: boolean | null
+          position?: number | null
+          test?: number
+        }
+      }
       contents_provided: {
         Row: {
           chapter_type: Database["public"]["Enums"]["chaptertype"]
           id: number
+          position: number | null
           title: string
           title_chosen: string
         }
         Insert: {
           chapter_type?: Database["public"]["Enums"]["chaptertype"]
           id?: number
+          position?: number | null
           title: string
           title_chosen: string
         }
         Update: {
           chapter_type?: Database["public"]["Enums"]["chaptertype"]
           id?: number
+          position?: number | null
           title?: string
           title_chosen?: string
         }
       }
       contents_selected: {
         Row: {
-          chapter_type: Database["public"]["Enums"]["chaptertype"]
           contents_chosen: number
           contents_named: string | null
           created_at: string
           id: number
           is_used: boolean
           plan_id: number
-          position: number
+          uses_control: boolean
+          uses_docs: boolean
+          uses_manegment: boolean
+          uses_purpose: boolean
+          uses_supervisors: boolean
         }
         Insert: {
-          chapter_type?: Database["public"]["Enums"]["chaptertype"]
           contents_chosen: number
           contents_named?: string | null
           created_at?: string
           id?: number
           is_used?: boolean
           plan_id: number
-          position: number
+          uses_control?: boolean
+          uses_docs?: boolean
+          uses_manegment?: boolean
+          uses_purpose?: boolean
+          uses_supervisors?: boolean
         }
         Update: {
-          chapter_type?: Database["public"]["Enums"]["chaptertype"]
           contents_chosen?: number
           contents_named?: string | null
           created_at?: string
           id?: number
           is_used?: boolean
           plan_id?: number
-          position?: number
+          uses_control?: boolean
+          uses_docs?: boolean
+          uses_manegment?: boolean
+          uses_purpose?: boolean
+          uses_supervisors?: boolean
         }
       }
       mtm_variables_main_contents_provided: {
@@ -224,6 +355,70 @@ export interface Database {
           connected_pre_contents?: number | null
           created_at?: string | null
           id?: number
+        }
+      }
+      provided_control: {
+        Row: {
+          changetext: Json | null
+          connect_chapter: number | null
+          connected_variable: number | null
+          control_provided: string | null
+          created_at: string | null
+          default_position: number | null
+          has_link: string | null
+          id: number
+        }
+        Insert: {
+          changetext?: Json | null
+          connect_chapter?: number | null
+          connected_variable?: number | null
+          control_provided?: string | null
+          created_at?: string | null
+          default_position?: number | null
+          has_link?: string | null
+          id?: number
+        }
+        Update: {
+          changetext?: Json | null
+          connect_chapter?: number | null
+          connected_variable?: number | null
+          control_provided?: string | null
+          created_at?: string | null
+          default_position?: number | null
+          has_link?: string | null
+          id?: number
+        }
+      }
+      provided_manegment: {
+        Row: {
+          changetext: Json | null
+          connected_chapter: number
+          connected_variable: number | null
+          created_at: string | null
+          default_position: number
+          has_link: string | null
+          id: number
+          provided_manegment: string | null
+        }
+        Insert: {
+          changetext?: Json | null
+          connected_chapter: number
+          connected_variable?: number | null
+          created_at?: string | null
+          default_position: number
+          has_link?: string | null
+          id?: number
+          provided_manegment?: string | null
+        }
+        Update: {
+          changetext?: Json | null
+          connected_chapter?: number
+          connected_variable?: number | null
+          created_at?: string | null
+          default_position?: number
+          has_link?: string | null
+          id?: number
+          provided_manegment?: string | null
         }
       }
       pta_offices: {
@@ -256,6 +451,52 @@ export interface Database {
           name?: string
           phone?: number | null
           region?: string
+        }
+      }
+      purpose_provided: {
+        Row: {
+          connected_chapter: number | null
+          created_at: string | null
+          id: number
+          link: string | null
+          purpose: string | null
+          version: number | null
+        }
+        Insert: {
+          connected_chapter?: number | null
+          created_at?: string | null
+          id?: number
+          link?: string | null
+          purpose?: string | null
+          version?: number | null
+        }
+        Update: {
+          connected_chapter?: number | null
+          created_at?: string | null
+          id?: number
+          link?: string | null
+          purpose?: string | null
+          version?: number | null
+        }
+      }
+      purpose_selected: {
+        Row: {
+          connected_chapter: number
+          created_at: string | null
+          id: number
+          version: number | null
+        }
+        Insert: {
+          connected_chapter: number
+          created_at?: string | null
+          id?: number
+          version?: number | null
+        }
+        Update: {
+          connected_chapter?: number
+          created_at?: string | null
+          id?: number
+          version?: number | null
         }
       }
       self_plans: {
@@ -311,50 +552,162 @@ export interface Database {
           website?: string | null
         }
       }
-      todos: {
+      variables_contents_provided: {
         Row: {
+          contents: number | null
+          created_at: string | null
           id: number
-          inserted_at: string
-          is_complete: boolean | null
-          task: string | null
-          user_id: string
+          variable: number | null
         }
         Insert: {
+          contents?: number | null
+          created_at?: string | null
           id?: number
-          inserted_at?: string
-          is_complete?: boolean | null
-          task?: string | null
-          user_id: string
+          variable?: number | null
         }
         Update: {
+          contents?: number | null
+          created_at?: string | null
           id?: number
-          inserted_at?: string
-          is_complete?: boolean | null
-          task?: string | null
-          user_id?: string
+          variable?: number | null
         }
       }
       variables_main: {
         Row: {
           created_at: string | null
+          how_many_options: number
           id: number
           info: string | null
+          named_variable: string | null
+          options: string[] | null
           variable: string
           version: number
         }
         Insert: {
           created_at?: string | null
+          how_many_options?: number
           id?: number
           info?: string | null
+          named_variable?: string | null
+          options?: string[] | null
           variable: string
           version?: number
         }
         Update: {
           created_at?: string | null
+          how_many_options?: number
           id?: number
           info?: string | null
+          named_variable?: string | null
+          options?: string[] | null
           variable?: string
           version?: number
+        }
+      }
+      variables_secondary: {
+        Row: {
+          created_at: string | null
+          id: number
+          variable_main_connected: number | null
+          variable_secondary: string | null
+          variable_secondary_named: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          variable_main_connected?: number | null
+          variable_secondary?: string | null
+          variable_secondary_named?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          variable_main_connected?: number | null
+          variable_secondary?: string | null
+          variable_secondary_named?: string | null
+        }
+      }
+      variables_selected: {
+        Row: {
+          created_at: string | null
+          id: number
+          plan_id: number | null
+          selected_option: number | null
+          variable_selected: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          plan_id?: number | null
+          selected_option?: number | null
+          variable_selected?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          plan_id?: number | null
+          selected_option?: number | null
+          variable_selected?: number | null
+        }
+      }
+      worker_task_connected: {
+        Row: {
+          created_at: string | null
+          id: number
+          is_used: boolean | null
+          task_provided_id: number | null
+          worker_id: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          is_used?: boolean | null
+          task_provided_id?: number | null
+          worker_id?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          is_used?: boolean | null
+          task_provided_id?: number | null
+          worker_id?: number | null
+        }
+      }
+      worker_tasks_provided: {
+        Row: {
+          content_provided: number | null
+          id: number
+          task: string | null
+        }
+        Insert: {
+          content_provided?: number | null
+          id?: number
+          task?: string | null
+        }
+        Update: {
+          content_provided?: number | null
+          id?: number
+          task?: string | null
+        }
+      }
+      workers_added: {
+        Row: {
+          created_at: string | null
+          id: number
+          plan_id: number | null
+          worker: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          plan_id?: number | null
+          worker?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          plan_id?: number | null
+          worker?: string | null
         }
       }
     }

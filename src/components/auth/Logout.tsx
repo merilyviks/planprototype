@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { useSupabase } from "../../app/supabase-provider";
 import { TbLogout } from "react-icons/tb";
+import { useRouter } from "next/navigation";
 
 export default function Logout({
   text,
@@ -12,16 +13,21 @@ export default function Logout({
   isSeen: boolean;
 }) {
   const { supabase } = useSupabase();
+  const router = useRouter();
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    redirect("http://localhost:3000/");
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error.message);
+    } else {
+      router.push("/");
+    }
   };
 
   return (
     <button
       onClick={handleLogout}
-      className="icon-button text-button logout"
+      className="logout icon-button text-button "
       style={{ visibility: isSeen ? "visible" : "hidden" }}
     >
       {text ? <p>{text}</p> : null}

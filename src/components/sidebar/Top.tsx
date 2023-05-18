@@ -3,14 +3,13 @@ import MainChapter from "./top/MainChapter";
 import OneChapter from "./top/OneChapter";
 import { Contents_selected, Self_plans } from "@/lib/general/generalTypes";
 
-async function getContentsPre({ planId }: { planId: number }) {
+async function getContents({ planId }: { planId: number }) {
   const supabase = createServerClient();
   const { data: Contents, error } = await supabase
     .from("contents_selected")
     .select(`*, contents_provided(*)`)
     .eq("plan_id", planId)
-    .order("position", { ascending: true });
-
+    .eq("is_used", true);
   if (error) {
     throw new Error(error.message);
   }
@@ -21,18 +20,21 @@ async function getContentsPre({ planId }: { planId: number }) {
 }
 
 export default async function Top({
-  params,
+  params: { planId, selfPlan },
 }: {
-  params: { planId: number; selfPlan: string };
-}) {
-  const planId = params.planId;
-  const selfPlanString = params.selfPlan;
-  const selfPlans = JSON.parse(selfPlanString);
-  const contentsData = await getContentsPre({ planId });
+  params: { planId: number; selfPlan: Self_plans };
+}): Promise<JSX.Element> {
+  const contentsDataUnsorted = await getContents({ planId });
 
-  const contentsPre = contentsData.filter((obj) => obj.chapter_type === "pre");
+  const contentsData = contentsDataUnsorted.sort(
+    (a, b) => a.contents_provided?.position - b.contents_provided?.position
+  );
+
+  const contentsPre = contentsData.filter(
+    (obj) => obj.contents_provided?.chapter_type === "pre"
+  );
   const contentsHaccp = contentsData.filter(
-    (obj) => obj.chapter_type === "haccp"
+    (obj) => obj.contents_provided?.chapter_type === "haccp"
   );
 
   let mainChaptersCount = 1;
@@ -46,7 +48,7 @@ export default async function Top({
           id={planId}
           chosenTitle={"Sisukord"}
         />
-        {selfPlans.has_concepts ? (
+        {selfPlan.has_concepts ? (
           <OneChapter
             urlTitle={"concepts"}
             id={planId}
@@ -56,7 +58,7 @@ export default async function Top({
           "none"
         )}
 
-        {selfPlans.has_pre_chapter ? (
+        {selfPlan.has_pre_chapter ? (
           <MainChapter
             mainCount={mainChaptersCount++}
             contents={contentsPre}
@@ -67,7 +69,7 @@ export default async function Top({
           "none"
         )}
 
-        {selfPlans.has_haccp_chapter ? (
+        {selfPlan.has_haccp_chapter ? (
           <MainChapter
             mainCount={mainChaptersCount++}
             contents={contentsHaccp}

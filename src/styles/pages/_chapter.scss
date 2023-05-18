@@ -1,0 +1,40 @@
+@use "../base/mixins" as m;
+
+.chapter-body {
+  @include m.main-background;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  .chapter {
+    width: 80%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    display: block;
+    position: absolute;
+    background-color: #d4d4d3d1;
+    overflow: scroll;
+
+    .chapter-container {
+      width: 210mm;
+      min-height: 297mm;
+      background-color: white;
+      margin: 2rem auto;
+      box-shadow: 4px 4px 85px 5px rgba(0, 0, 0, 0.1);
+      padding: 2cm;
+      h1 {
+        font-size: 14pt;
+        margin-bottom: 24pt;
+      }
+      h2 {
+        font-weight: 600;
+        text-decoration: underline;
+        margin-top: 24pt;
+      }
+      p {
+        margin-top: 6pt;
+      }
+    }
+  }
+}
