@@ -1,3 +1,4 @@
+import TextRow from "@/components/chapters/TextRow";
 import { Self_plans } from "@/lib/general/generalTypes";
 import { createServerClient } from "@/utils/supabase-server";
 
@@ -28,56 +29,64 @@ export default async function TitlePage({
       <h1>Enesekontrolliplaan</h1>
       <h2>{selfPlan.self_plan_name}</h2>
       <h2>toitlustamine</h2>
-      <table>
+
+      <section>
         {selfPlan.company_info?.is_company ? (
           <>
-            <tr>
-              <td>Ettevõtte ärinimi:</td>
-              <td>{selfPlan.company_info?.company_name}</td>
-            </tr>
-            <tr>
-              <td>Registrikood:</td>
-              <td>{selfPlan.company_info?.register_code}</td>
-            </tr>
-            <tr>
-              <td>Juriidiline aadress:</td>
-              <td>{selfPlan.company_info?.company_location}</td>
-            </tr>
+            <TextRow
+              elements={[
+                "Ettevõtte ärinimi:",
+                "päike",
+                `${selfPlan.company_info.company_name}`,
+              ]}
+            />
+            <TextRow
+              elements={[
+                "Registrikood:",
+                `${selfPlan.company_info.register_code}`,
+              ]}
+            />
+            <TextRow
+              elements={[
+                "Juriidiline aadress:",
+                `${selfPlan.company_info.company_location}`,
+              ]}
+            />
           </>
         ) : (
           <>
-            <tr>
-              <td>Vastatava eraisiku nimi:</td>
-              <td>{selfPlan.company_info?.company_name}</td>
-            </tr>
-            <tr>
-              <td>Isikukood:</td>
-              <td>{selfPlan.company_info?.register_code}</td>
-            </tr>
+            |
+            <TextRow
+              elements={[
+                "Vastatava eraisiku nimi:",
+
+                `${selfPlan.company_info?.company_name}`,
+              ]}
+            />
+            <TextRow
+              elements={[
+                "Isikukood:",
+                `${selfPlan.company_info?.register_code}`,
+              ]}
+            />
           </>
         )}
+        <TextRow
+          elements={["Tegevuskoha aadress:", `${selfPlan.location_address}`]}
+        />
 
-        <tr>
-          <td>Tegevuskoha aadress:</td>
-          <td>{selfPlan.location_address}</td>
-        </tr>
         <br />
-        <tr>
-          <td>Kontaktisik:</td>
-          <td>
-            {selfPlan.contact_person?.firstname}{" "}
-            {selfPlan.contact_person?.lastname}
-          </td>
-        </tr>
-        <tr>
-          <td>Telefon:</td>
-          <td>{selfPlan.contact_person?.phone}</td>
-        </tr>
-        <tr>
-          <td>Email:</td>
-          <td>{selfPlan.contact_person?.email}</td>
-        </tr>
-      </table>
+
+        <TextRow
+          elements={[
+            "Kontaktisik:",
+            `${selfPlan.contact_person?.firstname} ${selfPlan.contact_person?.lastname}`,
+          ]}
+        />
+        <TextRow elements={["Telefon:", `${selfPlan.contact_person?.phone}`]} />
+
+        <TextRow elements={["Email:", `${selfPlan.contact_person?.email}`]} />
+      </section>
     </div>
   );
 }

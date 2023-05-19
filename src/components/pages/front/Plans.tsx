@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import CardContainer from "@/app/(main)/components/CardContainer";
-import ToolBar from "@/app/(main)/components/ToolBar";
+import CardContainer from "@/components/pages/front/CardContainer";
+import ToolBar from "@/components/pages/front/ToolBar";
 import { createServerClient } from "@/utils/supabase-server";
 import { Self_plans } from "@/lib/general/generalTypes";
 

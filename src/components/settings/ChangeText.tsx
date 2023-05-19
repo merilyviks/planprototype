@@ -67,6 +67,7 @@ export default function ChangeText({
 
   return (
     <div ref={ref}>
+
       <input
         type="text"
         ref={inputRef}
@@ -83,7 +84,7 @@ export default function ChangeText({
           </button>
         </>
       ) : (
-        <button onClick={handleFocus}>muuda</button>
+        <button className="chapter-btn-small-logo" onClick={handleFocus}>muuda</button>
       )}
     </div>
   );

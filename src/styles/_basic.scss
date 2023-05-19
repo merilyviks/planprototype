@@ -1,0 +1,7 @@
+.text-row {
+  display: flex;
+  width: 100%;
+  .text-row-element:first-child {
+    width: 50%;
+  }
+}
